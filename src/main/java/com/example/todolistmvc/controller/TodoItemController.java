@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 public class TodoItemController {
-
     private final TodoItemDao todoItemDao;
     @RequestMapping("/")
     public String index(Model model){
@@ -24,7 +23,7 @@ public class TodoItemController {
     }
     @PostMapping("/save-todo")
     public String saveTodoItem(@Valid TodoItem todoItem, BindingResult result){
-        if (result.hasErrors()){
+        if(result.hasErrors()){
             return "index";
         }
         todoItemDao.save(todoItem);
